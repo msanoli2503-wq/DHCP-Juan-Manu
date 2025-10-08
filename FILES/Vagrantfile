@@ -2,28 +2,20 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bookworm64"
-end
-
-
-config.vm.define "server" do |server|
-    server.vm.box = "debian/bookworm64"
-    server.vm.hostname = "server"
-    server.vm.network "private_network", ip: "192.168.56.10"
-    server.vm.network "private_network", ip: "192.168.57.10"
+  config.vm.box = "debian/bullseye64"
+  config.vm.define "server" do |server|
+    server.vm.network "private_network", ip:"192.168.56.10"
+    server.vm.network "private_network", ip:"192.168.57.10", virtualbox__intnet: "intnet"
+    server.vm.provision "shell", path:"provision-server.sh"
   end
-
-  # Client 1 (c1)
   config.vm.define "c1" do |c1|
-    c1.vm.box = "debian/bookworm64"
-    c1.vm.hostname = "c1"
-    c1.vm.network "private_network", type: "dhcp"
+    c1.vm.hostname ="c1"
+    c1.vm.network "private_network", virtualbox__intnet: "intnet", type: "dhcp"
+    c1.vm.provision "shell", path: "provision-c1.sh"
   end
-
-  # Client 2 (c2)
   config.vm.define "c2" do |c2|
-    c2.vm.box = "debian/bookworm64"
     c2.vm.hostname = "c2"
-    c2.vm.network "private_network", type: "dhcp"
+    c2.vm.network "private_network", virtualbox__intnet: "intnet", mac: "080027ABCDEF", auto_config: false
+    c2.vm.provision "shell", path: "provision-c2.sh"
   end
 end
