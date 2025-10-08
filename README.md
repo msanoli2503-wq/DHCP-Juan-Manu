@@ -9,6 +9,6 @@ configuration from the server automatically (c2 based on its MAC addres)
 ## ⚙️ WHAT WE USED 
 - Vagrant
 - VirtualBox  
-- Sistema operativo host: DEBIAN SERVER (debian/bookworm64)  
+- Sistema operativo host: DEBIAN SERVER (debian/bulleyed64)  
 
 ---
