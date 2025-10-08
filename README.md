@@ -1,4 +1,4 @@
-# 🖧 PROTYECT DHCP DHCP
+# 🖧 PROJECT DHCP 
 
 ## 📌 OBJECTIVE 
 We will create a DHCP server (server) and two clients (c1 and c2) that will obtain their
