@@ -1,12 +1,12 @@
 #!/bin/bash
 sudo apt-get update -y
-sudo apt-get install -y isc-dhcp-server
+sudo apt-get install -y isc-dhcp-server #The comand we used to install the dhcp sever
 cat <<EOF | sudo tee /etc/dhcp/dhcpd.conf
 default-lease-time 86400;
 max-lease-time 691200;
-authoritative;
+authoritative; 
 
-option domain-name "micasa.es.";
+option domain-name "micasa.es.";    
 option domain-name-servers 8.8.8.8, 4.4.4.4;
 
 subnet 192.168.57.0 netmask 255.255.255.0 {
@@ -26,3 +26,13 @@ sudo bash -c 'echo "INTERFACESv4=\"eth2\"" > /etc/default/isc-dhcp-server'
 
 sudo systemctl restart isc-dhcp-server
 sudo systemctl enable isc-dhcp-server
+
+
+
+# COMMAND EXPLANATION
+# apt-get update -y                 = Updates the package list
+# apt-get install isc-dhcp-server   = Installs the DHCP server package
+# cat <<EOF ...                     = Writes the DHCP configuration file
+# echo 'INTERFACESv4="eth2"'        = Defines the interface to listen on
+# systemctl restart ...             = Restarts the DHCP service
+# systemctl enable ...              = Ensures the service starts on boot
