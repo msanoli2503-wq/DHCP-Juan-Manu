@@ -28,9 +28,9 @@ This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DH
     **Adapter 1**: Host-only network 192.168.56.0/24 with IP 192.168.56.10(For the communication between The real PC and the Machine)
     **Adapter 2**: Internal network 192.168.57.0/24 with IP 192.168.57.10(For the comunication between the machines )
 
-    The first adapter had Internet access to download packages; the second was used for DHCP traffic only.
-   ----
-    The network configuration was verified with the command: **ip a** . 
+   The first adapter had Internet access to download packages; the second was used for DHCP traffic only.
+   
+   The network configuration was verified with the command: **ip a** . 
     
     **OUT PUT**:
     ----    
@@ -77,13 +77,13 @@ This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DH
 
 ---
 
-## Step 5: Client 2 (c2) – Fixed IP via MAC
+## Step 4: Client 1 (c1) – Fixed IP via MAC
 
 Once again we automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh)
 
-Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between 192.168.57.25 and 192.168.57.50.
+-Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between 192.168.57.25 and 192.168.57.50.
 
-If you want it you could check it with the  **ip** command oce more to see the results. 
+-If you want it you could check it with the  **ip** command oce more to see the results. 
 
 ---
 
