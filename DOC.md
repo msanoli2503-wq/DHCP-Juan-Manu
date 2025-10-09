@@ -80,18 +80,18 @@ This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DH
 
 ## Step 4: Client 1 (c1) – Fixed IP via MAC
 
-Once again we automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh)
+Once again we automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh),also there you'll find more info about the commands.
 
--Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between 192.168.57.25 and 192.168.57.50.
+-Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between **192.168.57.25** and **192.168.57.50**.
 
 -If you want it you could check it with the  **ip** command oce more to see the results. 
 
 ---
 
 ## STEP 5 CLIENT 2 (c2)-FIXED IP VIA MAC 
-We configured this with the static lease in the server’s dhcpd.conf and [provision-c2.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c2.sh)
+We configured this with the static lease in the server’s dhcpd.conf and [provision-c2.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c2.sh),also there you'll find more info about the commands.
 
-1.  The c2 uses DHCP, but the server recognizes its MAC and always gives: **192.168.57.4**
+1.  The c2 uses DHCP, but the server recognizes its MAC and always gives: **192.168.57.4**.
 
 
 
