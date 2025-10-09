@@ -6,24 +6,37 @@
 ---
 
 ## Step 2: Server Configuration (Vagrant + Provision)
-1.This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-server.sh)
+This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-server.sh)
+
+1. Installs the DHCP server.
+
+2. Defines the IP range: 192.168.57.25 to 192.168.57.50.
+
+3. Configures a static lease for c2 (MAC 08:00:27:ab:cd:ef) with IP 192.168.57.4.
+
+4. Configures the service to listen on eth2.
+
+5. Starts and enables the service automatically.
 
 ---
 
 ## Step 3: Network Verification on Server
 
-2. Two network adapters were configured([In the Vagrantfile](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/Vagrantfile))
+2. Two network adapters were configured[In the Vagrantfile](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/Vagrantfile),also there you can see the structure we followed and the explanation for the commands 
 
     
-    Adapter 1: Host-only network 192.168.56.0/24 with IP 192.168.56.10(For the communication between The real PC and the Machine)
-    Adapter 2: Internal network 192.168.57.0/24 with IP 192.168.57.10(For the comunication between the machines )
+    **Adapter 1**: Host-only network 192.168.56.0/24 with IP 192.168.56.10(For the communication between The real PC and the Machine)
+    **Adapter 2**: Internal network 192.168.57.0/24 with IP 192.168.57.10(For the comunication between the machines )
 
     The first adapter had Internet access to download packages; the second was used for DHCP traffic only.
-
+   ----
     The network configuration was verified with the command: **ip a** . 
+    
     **OUT PUT**:
-        
-    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000 NAT
+    ----    
+   **LOOPBACK**
+
+    1. lo: **<LOOPBACK,UP,LOWER_UP>** mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000 NAT
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
@@ -32,7 +45,7 @@
         
     **NAT NETWORK(INTERNET SOURCE)**
 
-    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000 
+    2. eth0: **<BROADCAST,MULTICAST,UP,LOWER_UP>** mtu 1500 qdisc pfifo_fast state UP group default qlen 1000 
     link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
     altname enp0s3
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
@@ -44,7 +57,7 @@
 
     **HOST-ONLY INTERFACE**
 
-    3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    3. eth1: **<BROADCAST,MULTICAST,UP,LOWER_UP>** mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:9b:fc:65 brd ff:ff:ff:ff:ff:ff
     altname enp0s8
     inet 192.168.56.10/24 brd 192.168.56.255 scope global eth1
@@ -54,7 +67,7 @@
 
     **INTERNAL NETWORK FOR DHCP**
 
-    4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    4. eth2: **<BROADCAST,MULTICAST,UP,LOWER_UP>** mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:70:2f:7c brd ff:ff:ff:ff:ff:ff
     altname enp0s9
     inet 192.168.57.10/24 brd 192.168.57.255 scope global eth2
@@ -63,6 +76,21 @@
        valid_lft forever preferred_lft forever
 
 ---
-## Step 4: Client 1 (c1) – DHCP Dynamic Address
 
-Once again we  automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh)....
+## Step 5: Client 2 (c2) – Fixed IP via MAC
+
+Once again we automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh)
+
+Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between 192.168.57.25 and 192.168.57.50.
+
+If you want it you could check it with the  **ip** command oce more to see the results. 
+
+---
+
+## STEP 5 CLIENT 2 (c2)-FIXED IP VIA MAC 
+We configured this with the static lease in the server’s dhcpd.conf and [provision-c2.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c2.sh)
+
+1.  The c2 uses DHCP, but the server recognizes its MAC and always gives: **192.168.57.4**
+
+
+

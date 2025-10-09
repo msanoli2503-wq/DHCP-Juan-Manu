@@ -19,3 +19,23 @@ Vagrant.configure("2") do |config|
     c2.vm.provision "shell", path: "provision-c2.sh"
   end
 end
+
+# COMMAND EXPLANATION
+ 
+# Vagrant.configure("2") do |config| = Starts the Vagrant configuration using version 2 and config is the main object used to define VMs and global options.
+
+# config.vm.box = "debian/bullseye64" = Sets the base box (operating system) for all virtual machines.
+
+# config.vm.define "name" do |vm| = Defines a virtual machine with a specific name and vm is the object used to configure this particular VM.
+
+# vm.vm.hostname = "name" = Sets the hostname of the virtual machine.
+
+# vm.vm.network "private_network", ip:"x.x.x.x"  = Creates a private network interface with a static IP address.
+
+# vm.vm.network "private_network", virtualbox__intnet: "network_name"
+#   -Connects the VM to a VirtualBox internal network called "network_name".
+#   -If type: "dhcp" is added, the VM will receive its IP automatically.
+#   -mac: "XXXX" allows assigning a fixed MAC address.
+#   -auto_config: false prevents Vagrant from automatically configuring the IP.
+
+# vm.vm.provision "shell", path:"script.sh"  = Runs a shell script during VM provisioningand is useful for installing software or automatically configuring services.
