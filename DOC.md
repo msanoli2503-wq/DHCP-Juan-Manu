@@ -25,9 +25,9 @@ This was automated in [provision-server.sh](https://github.com/msanoli2503-wq/DH
 2. Two network adapters were configured[In the Vagrantfile](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/Vagrantfile),also there you can see the structure we followed and the explanation for the commands 
 
     
-    **Adapter 1**: Host-only network 192.168.56.0/24 with IP 192.168.56.10(For the communication between The real PC and the Machine)
-    
-    **Adapter 2**: Internal network 192.168.57.0/24 with IP 192.168.57.10(For the comunication between the machines )
+    **Adapter 1**: Host-only network 192.168.56.0/24 with IP 192.168.56.10(For the communication between The real PC and the Machine).
+
+    **Adapter 2**: Internal network 192.168.57.0/24 with IP 192.168.57.10(For the comunication between the machines ).
 
    The first adapter had Internet access to download packages; the second was used for DHCP traffic only.
    
