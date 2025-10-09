@@ -65,4 +65,4 @@
 ---
 ## Step 4: Client 1 (c1) – DHCP Dynamic Address
 
-Once again we  automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh).
+Once again we  automated this with [provision-c1.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c1.sh)....

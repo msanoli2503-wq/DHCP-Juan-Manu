@@ -21,3 +21,4 @@ sudo dhclient -v eth1 || true
 # tee /etc/network/interfaces       → Configures eth1 to get IP via DHCP
 # systemctl restart networking      → Applies the new network settings
 # dhclient -v eth1                  → Requests the fixed IP based on MAC
+#

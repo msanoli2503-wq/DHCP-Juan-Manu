@@ -36,3 +36,4 @@ sudo systemctl enable isc-dhcp-server
 # echo 'INTERFACESv4="eth2"'        = Defines the interface to listen on
 # systemctl restart ...             = Restarts the DHCP service
 # systemctl enable ...              = Ensures the service starts on boot
+#
