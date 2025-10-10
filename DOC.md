@@ -101,13 +101,13 @@ On the server by using this command:**sudo cat /var/log/syslog | grep dhcpd**.
 
 And we get an **output** like this:
 
--DHCPDISCOVER from **08:00:27:ab:cd:ef**.
+  - DHCPDISCOVER from **08:00:27:ab:cd:ef**.
 
--DHCPOFFER on **192.168.57.4**.
+  - DHCPOFFER on **192.168.57.4**.
 
--DHCPREQUEST for **192.168.57.4**.
+  - DHCPREQUEST for **192.168.57.4**.
 
--DHCPACK on **192.168.57.4**.
+  - DHCPACK on **192.168.57.4**.
 
 ---
 
@@ -115,18 +115,18 @@ And to see the **lease file** we use this command :**cat /var/lib/dhcp/dhcpd.lea
 
 And again we get an **output** similar to this:
 
--lease **192.168.57.4** {
+   - lease **192.168.57.4** {
 
-  -**starts** 2 2025/10/08 14:25:30.
+   - **starts** 2 2025/10/08 14:25:30.
 
-  -**ends** 2 2025/10/08 15:25:30.
+   - **ends** 2 2025/10/08 15:25:30.
 
-  -binding state **active**.
+   - binding state **active**.
 
-  -hardware ethernet **08:00:27:ab:cd:ef**.
+   - hardware ethernet **08:00:27:ab:cd:ef**.
 
-  -client-hostname **"c2"**.
-}
+   - client-hostname **"c2"**.
+      }
 
 But also while we are installing the machines we can see in the console. 
 
@@ -136,12 +136,12 @@ But also while we are installing the machines we can see in the console.
 
 You can test **DHCP behavior** by releasing and renewing:
 
-1. **sudo dhclient -r eth1**.
-2. **sudo dhclient eth1**.
+   1. **sudo dhclient -r eth1**.
+   2. **sudo dhclient eth1**.
 
-c1 = receives a **new dynamic IP**.
+      c1 = receives a **new dynamic IP**.
 
-c2 = always gets **192.168.57.4**.
+      c2 = always gets **192.168.57.4**.
 
 
 
