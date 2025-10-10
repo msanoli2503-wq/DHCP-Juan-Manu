@@ -84,7 +84,7 @@ Once again we automated this with [provision-c1.sh](https://github.com/msanoli25
 
 -Thanks to the provision c1 requests an IP from the DHCP server through eth1 and It receives an address between **192.168.57.25** and **192.168.57.50**.
 
--If you want it you could check it with the  **ip** command oce more to see the results. 
+-If you want it you could check it with the  **ip** command once more to see the results. 
 
 ---
 
