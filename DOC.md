@@ -88,10 +88,53 @@ Once again we automated this with [provision-c1.sh](https://github.com/msanoli25
 
 ---
 
-## STEP 5 CLIENT 2 (c2)-FIXED IP VIA MAC 
+## STEP 5 Client 2 (c2)-Fixed ip via MAC
 We configured this with the static lease in the server’s dhcpd.conf and [provision-c2.sh](https://github.com/msanoli2503-wq/DHCP-Juan-Manu/blob/main/FILES/provision-c2.sh),also there you'll find more info about the commands.
 
 1.  The c2 uses DHCP, but the server recognizes its MAC and always gives: **192.168.57.4**.
+
+---
+
+## Step 6 Log and Lease Verification
+
+On the server by using this command:**sudo cat /var/log/syslog | grep dhcpd**.
+
+And we get an **output** like this:
+
+DHCPDISCOVER from **08:00:27:ab:cd:ef**.
+DHCPOFFER on **192.168.57.4**.
+DHCPREQUEST for **192.168.57.4**.
+DHCPACK on **192.168.57.4**.
+
+---
+
+And to see the **lease file** we use this command :**cat /var/lib/dhcp/dhcpd.leases**
+
+And again we get an **output** similar to this:
+
+lease **192.168.57.4** {
+  **starts** 2 2025/10/08 14:25:30;
+  **ends** 2 2025/10/08 15:25:30;
+  binding state **active**;
+  hardware ethernet **08:00:27:ab:cd:ef**;
+  client-hostname **"c2"**;
+}
+
+But also while we are installing the machines we can see in the console. 
+
+---
+
+## Step 7 Releasing and Renewing IP
+
+You can test **DHCP behavior** by releasing and renewing:
+
+1. **sudo dhclient -r eth1**
+2. **sudo dhclient eth1**
+
+c1 → receives a **new dynamic IP**.
+c2 → always gets **192.168.57.4**.
+
+
 
 
 
