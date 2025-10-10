@@ -128,11 +128,12 @@ But also while we are installing the machines we can see in the console.
 
 You can test **DHCP behavior** by releasing and renewing:
 
-1. **sudo dhclient -r eth1**
-2. **sudo dhclient eth1**
+1. **sudo dhclient -r eth1**.
+2. **sudo dhclient eth1**.
 
-c1 → receives a **new dynamic IP**.
-c2 → always gets **192.168.57.4**.
+c1 = receives a **new dynamic IP**.
+
+c2 = always gets **192.168.57.4**.
 
 
 
